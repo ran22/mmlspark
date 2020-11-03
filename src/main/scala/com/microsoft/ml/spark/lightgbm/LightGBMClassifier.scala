@@ -45,7 +45,7 @@ class LightGBMClassifier(override val uid: String)
     ClassifierTrainParams(getParallelism, getTopK, getNumIterations, getLearningRate, getNumLeaves, getMaxBin,
       getBinSampleCount, getBaggingFraction, getPosBaggingFraction, getNegBaggingFraction,
       getBaggingFreq, getBaggingSeed, getEarlyStoppingRound, getImprovementTolerance,
-      getFeatureFraction, getMaxDepth, getMinSumHessianInLeaf, numWorkers, getObjective, modelStr,
+      getFeatureFraction, getMaxDepth, getMinSumHessianInLeaf, numWorkers, getNumThreads, getObjective, modelStr,
       getIsUnbalance, getVerbosity, categoricalIndexes, actualNumClasses, getBoostFromAverage,
       getBoostingType, getLambdaL1, getLambdaL2, getIsProvideTrainingMetric,
       getMetric, getMinGainToSplit, getMaxDeltaStep, getMaxBinByFeature, getMinDataInLeaf, getSlotNames, getDelegate)

@@ -264,6 +264,12 @@ trait LightGBMParams extends Wrappable with DefaultParamsWritable with HasWeight
   def getVerbosity: Int = $(verbosity)
   def setVerbosity(value: Int): this.type = set(verbosity, value)
 
+  val numThreads = new IntParam(this, "numThreads", "number of threads for LightGBM")
+  setDefault(numThreads -> 0)
+
+  def getNumThreads: Int = $(numThreads)
+  def setNumThreads(value: Int): this.type = set(numThreads, value)
+
   val boostFromAverage = new BooleanParam(this, "boostFromAverage",
     "Adjusts initial score to the mean of labels for faster convergence")
   setDefault(boostFromAverage -> true)
