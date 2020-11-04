@@ -511,6 +511,7 @@ private object TrainUtils extends Serializable {
                     validationData: Option[Broadcast[Array[Row]]], log: Logger,
                     trainParams: TrainParams, numCoresPerExec: Int, schema: StructType)
                    (inputRows: Iterator[Row]): Iterator[LightGBMBooster] = {
+    log.info(s"starting training with parameters: ${trainParams.toString()}")
     val emptyPartition = !inputRows.hasNext
     // Ideally we would start the socket connections in the C layer, this opens us up for
     // race conditions in case other applications open sockets on cluster, but usually this
