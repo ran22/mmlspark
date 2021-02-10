@@ -270,6 +270,18 @@ trait LightGBMParams extends Wrappable with DefaultParamsWritable with HasWeight
   def getNumThreads: Int = $(numThreads)
   def setNumThreads(value: Int): this.type = set(numThreads, value)
 
+  val useMissing = new BooleanParam(this, "useMissing", "set this to false to disable the special handle of missing value")
+  setDefault(useMissing -> true)
+
+  def getUseMissing: Boolean = $(useMissing)
+  def setUseMissing(value: Boolean): this.type = set(useMissing, value)
+
+  val zeroAsMissing = new BooleanParam(this, "zeroAsMissing", "set this to true to treat all zero as missing values")
+  setDefault(zeroAsMissing -> false)
+
+  def getZeroAsMissing: Boolean = $(zeroAsMissing)
+  def setZeroAsMissing(value: Boolean): this.type = set(zeroAsMissing, value)
+
   val boostFromAverage = new BooleanParam(this, "boostFromAverage",
     "Adjusts initial score to the mean of labels for faster convergence")
   setDefault(boostFromAverage -> true)

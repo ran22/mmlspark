@@ -25,6 +25,8 @@ abstract class TrainParams extends Serializable {
   def minSumHessianInLeaf: Double
   def numMachines: Int
   def numThreads: Int
+  def useMissing: Boolean
+  def zeroAsMissing: Boolean
   def objective: String
   def modelString: Option[String]
   def verbosity: Int
@@ -50,7 +52,7 @@ abstract class TrainParams extends Serializable {
       s"neg_bagging_fraction=$negBaggingFraction bagging_freq=$baggingFreq " +
       s"bagging_seed=$baggingSeed early_stopping_round=$earlyStoppingRound " +
       s"feature_fraction=$featureFraction max_depth=$maxDepth min_sum_hessian_in_leaf=$minSumHessianInLeaf " +
-      s"num_machines=$numMachines num_threads=$numThreads objective=$objective verbosity=$verbosity " +
+      s"num_machines=$numMachines num_threads=$numThreads use_missing=$useMissing zero_as_missing=$zeroAsMissing objective=$objective verbosity=$verbosity " +
       s"lambda_l1=$lambdaL1 lambda_l2=$lambdaL2  metric=$metric min_gain_to_split=$minGainToSplit " +
       s"max_delta_step=$maxDeltaStep min_data_in_leaf=$minDataInLeaf " +
       (if (categoricalFeatures.isEmpty) "" else s"categorical_feature=${categoricalFeatures.mkString(",")} ") +
@@ -66,7 +68,7 @@ case class ClassifierTrainParams(parallelism: String, topK: Int, numIterations: 
                                  baggingFreq: Int, baggingSeed: Int, earlyStoppingRound: Int,
                                  improvementTolerance: Double, featureFraction: Double,
                                  maxDepth: Int, minSumHessianInLeaf: Double,
-                                 numMachines: Int, numThreads: Int, objective: String, modelString: Option[String],
+                                 numMachines: Int, numThreads: Int, useMissing: Boolean, zeroAsMissing: Boolean, objective: String, modelString: Option[String],
                                  isUnbalance: Boolean, verbosity: Int, categoricalFeatures: Array[Int],
                                  numClass: Int, boostFromAverage: Boolean,
                                  boostingType: String, lambdaL1: Double, lambdaL2: Double,
@@ -90,8 +92,8 @@ case class RegressorTrainParams(parallelism: String, topK: Int, numIterations: I
                                 baggingFraction: Double, posBaggingFraction: Double, negBaggingFraction: Double,
                                 baggingFreq: Int, baggingSeed: Int, earlyStoppingRound: Int,
                                 improvementTolerance: Double, featureFraction: Double,
-                                maxDepth: Int, minSumHessianInLeaf: Double, numMachines: Int, numThreads: Int,
-                                modelString: Option[String], verbosity: Int,
+                                maxDepth: Int, minSumHessianInLeaf: Double, numMachines: Int, numThreads: Int, 
+                                useMissing: Boolean, zeroAsMissing: Boolean, modelString: Option[String], verbosity: Int,
                                 categoricalFeatures: Array[Int], boostFromAverage: Boolean,
                                 boostingType: String, lambdaL1: Double, lambdaL2: Double,
                                 isProvideTrainingMetric: Boolean, metric: String, minGainToSplit: Double,
@@ -111,7 +113,7 @@ case class RankerTrainParams(parallelism: String, topK: Int, numIterations: Int,
                              baggingFraction: Double, posBaggingFraction: Double, negBaggingFraction: Double,
                              baggingFreq: Int, baggingSeed: Int, earlyStoppingRound: Int, improvementTolerance: Double,
                              featureFraction: Double, maxDepth: Int, minSumHessianInLeaf: Double, numMachines: Int, numThreads: Int,
-                             modelString: Option[String], verbosity: Int,
+                             useMissing: Boolean, zeroAsMissing: Boolean, modelString: Option[String], verbosity: Int,
                              categoricalFeatures: Array[Int], boostingType: String,
                              lambdaL1: Double, lambdaL2: Double, maxPosition: Int,
                              labelGain: Array[Double], isProvideTrainingMetric: Boolean,

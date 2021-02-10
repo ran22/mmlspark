@@ -60,7 +60,7 @@ class LightGBMRegressor(override val uid: String)
       getObjective, getAlpha, getTweedieVariancePower, getMaxBin, getBinSampleCount,
       getBaggingFraction, getPosBaggingFraction, getNegBaggingFraction, getBaggingFreq, getBaggingSeed,
       getEarlyStoppingRound, getImprovementTolerance, getFeatureFraction, getMaxDepth, getMinSumHessianInLeaf,
-      numWorkers, getNumThreads, modelStr, getVerbosity, categoricalIndexes, getBoostFromAverage, getBoostingType, getLambdaL1,
+      numWorkers, getNumThreads, getUseMissing, getZeroAsMissing, modelStr, getVerbosity, categoricalIndexes, getBoostFromAverage, getBoostingType, getLambdaL1,
       getLambdaL2, getIsProvideTrainingMetric, getMetric, getMinGainToSplit, getMaxDeltaStep,
       getMaxBinByFeature, getMinDataInLeaf, getSlotNames, getDelegate)
   }
